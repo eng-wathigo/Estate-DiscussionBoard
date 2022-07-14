@@ -1,0 +1,55 @@
+<html>
+{% extends 'main.html' %}
+{% load static %}
+{% block content%}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'style.css'%}" />
+    <title>StudyBuddy - Find study partners around the world!</title>
+  </head>
+<style>
+    .profile-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+
+<main class="layout layout--3">
+
+<h1>Jambo! {{user.username}}</h1>
+
+<div class="profile-container">
+    <div>
+        {% include 'base\topics_component.html'%}
+    </div>
+
+    <div>
+        
+        <a class="btn btn--main" href="{% url 'create-room' %}"> Create Discussion </a>
+        <h5>{{room_count}}  Discussions Available</h5>
+    
+        {% include 'base\feed_component.html'%}
+        
+    </div>
+        
+    <div>
+        {% include 'base\activity_component.html'%}
+
+    </div>
+    
+</div>
+
+</main>
+
+{% endblock content%}
+
+
+</html>
+
+
+
+
+

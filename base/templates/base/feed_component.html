@@ -1,0 +1,31 @@
+<html>
+    <main class="layout layout--3">
+
+    <div>
+        {% for room in rooms %}
+    
+        {% if request.user == room.host %}
+        
+        <a href ="{%url 'update-room' room.id %}"> Edit</a>
+        <a href ="{% url 'delete-room' room.id %}"> Delete</a>
+    
+        {% endif %}
+            
+    <a class="roomList__header"> 
+        <small><a>@{{room.host.username}}</a></small>
+        <span><a>- {{room.court.name}}</span></a>
+        <h2><a  class="btn--pill" href="{%url 'room' room.id %}">{{room.name}}</a></h2>
+        <a class="btn"><p>{{room.description}}</p></a>
+        
+        <small>posted on - {{room.created}}</small>
+        <hr>
+        </a>  
+
+                
+        {% endfor %}
+
+       
+    </div>
+    </main>
+    
+</html>
